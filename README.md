@@ -13,7 +13,7 @@ Visit https://v-wallet-eight.vercel.app/
 <br />
 
 2. Connect Wallet
-![3](./screenshots/wallet2.png)
+![2](./screenshots/wallet5.png)
 <br />
 
 3. After Connected
@@ -21,7 +21,7 @@ Visit https://v-wallet-eight.vercel.app/
 <br />
 
 4. My Wallet Dashboard
-![3](./screenshots/wallet4.png)
+![4](./screenshots/wallet4.png)
 <br />
 
 ## How to Run
