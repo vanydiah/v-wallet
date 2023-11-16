@@ -17,7 +17,7 @@ Visit https://v-wallet-eight.vercel.app/
 <br />
 
 3. After Connected
-![3](./screenshots/wallet3.png)
+![3](./screenshots/wallet6.png)
 <br />
 
 4. My Wallet Dashboard
