@@ -47,8 +47,8 @@ function Home() {
                                 {btnText}
                             </button>
                             <br />
-                            <small className='warningText'>{errorMessage}</small>
-                            <small className='walletAddress'>Successfully connected<br />Address : {walletAdrres}</small>
+                            {errorMessage && <small className='warningText'>{errorMessage}</small>}
+                            {isConnect && <small className='walletAddress'>Successfully connected<br />Address : {walletAdrres}</small>}
                         </div>
                         <div>
                             <Lottie animationData={require('../assets/json/wallet-lottie.json')} loop={true} />
