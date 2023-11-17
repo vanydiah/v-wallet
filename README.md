@@ -3,7 +3,7 @@
 This project contains MetaMask integration, wallet connect, change network, show balance and transfer.
 
 ## Demo
-I've deployed to Vercel. Visit https://v-wallet-eight.vercel.app/
+I've been deployed to Vercel. Visit https://v-wallet-eight.vercel.app/
 
 ## Screenshots
 
@@ -45,3 +45,5 @@ To deploy on production mode.
 
 ## Contact
 Visit https://vanydiah.carrd.co
+
+I'm new in Web 3.0, Crypto, Blokchain and excited to learn more about it. Any inputs are welcome 😊
