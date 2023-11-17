@@ -20,11 +20,15 @@ I've been deployed to Vercel. Visit https://v-wallet-eight.vercel.app/
 <br />
 
 4. My Wallet Dashboard
-![4](./screenshots/wallet4.png)
+![4](./screenshots/wallet-my1.png)
 <br />
 
-4. My Wallet Transaction
-![4](./screenshots/wallet8.png)
+5. My Wallet Transaction
+![5](./screenshots/wallet-my3.png)
+<br />
+
+6. Switch Network
+![5](./screenshots/wallet-my4.png)
 <br />
 
 ## How to Run

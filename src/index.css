@@ -62,3 +62,261 @@ code {
 	from {background-position:0 0;}
 	to {background-position:10000px 0;}
 }
+
+/*Index*/
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 0 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.btn-connect {
+  background-color: #834cfe;
+  /* Green */
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 1rem 4rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1rem 0;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+  font-weight: 700;
+}
+.btn-connect.connected{
+  background-color: #ecbb35;
+  color: #000;
+}
+
+.btn-connect {
+  box-shadow: 0 6px 12px 0 rgba(38, 141, 182, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-connect:hover {
+  box-shadow: 0 12px 16px 0 rgba(15, 29, 158, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.warningText {
+  color: red;
+  font-size: 12px;
+}
+
+.walletAddress {
+  color: rgb(191, 181, 252);
+  font-size: 12px;
+}
+
+/*Dashboard*/
+.main-container {
+  padding: 3rem 0;
+}
+.page-container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.logo {
+  height: 20vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+      animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.container-glass {
+  /* display: flex; */
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  color: white;
+  height: auto;
+  z-index: 100;
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 800px;
+}
+
+.link {
+  color: #61dafb;
+}
+
+@keyframes logo-spin {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.address-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -30px;
+}
+
+.copy {
+  width: 20px;
+  cursor: pointer;
+}
+
+.balance {
+  margin-top: -20px;
+}
+
+.switch-title {
+  margin-top: 50px;
+}
+
+.btn-network {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: thin solid #ecbb35;
+  border-radius: 50px;
+  color: #ecbb35;
+  padding: 1rem 2rem;
+  background-color: transparent;
+}
+
+.btn-network:hover {
+  opacity: .8
+}
+
+.network-switcher {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.content-left {
+  padding: 1rem 3rem;
+  margin-top: .5rem;
+}
+
+.content-right {
+  padding: 1rem 3rem;
+  margin-top: .5rem;
+}
+
+.input {
+  text-align: center;
+  border: thin solid rgba(255,255,255,.5);
+  background: transparent;
+  border-radius: 50px;
+  padding: 0.5rem 0;
+  width: 100%;
+  display: block;
+  color: #ffffff;
+  font-size: 16px;
+  margin: 1rem 0;
+}
+
+.btn-send {
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  background-color: #834cfe;
+  /* Green */
+  border: none;
+  border-radius: 50px;
+  color: white;
+  padding: 1rem 4rem;
+  font-weight: 700;
+}
+
+.btn-send:hover {
+  opacity: .8;
+}
+
+.txHash{
+  margin-top: 20px;
+}
+
+.copytxHash{
+  width: 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.transfer{
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255,255,255,.1);
+}

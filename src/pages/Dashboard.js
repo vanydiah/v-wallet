@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import logo from '../assets/logo.png';
 import copy from '../assets/copy.png';
-import './Dashboard.css';
 import { ethers } from 'ethers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,7 +14,7 @@ function Dashboard() {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const [amount, setAmount] = useState("");
-    const [reciever, setReciever] = useState("");
+    const [receiver, setReceiver] = useState("");
     const [txHash, setTxHash] = useState(null);
     const [isHashAvailable, setHashAvailability] = useState(false);
 
@@ -68,7 +66,7 @@ function Dashboard() {
     const getBalance = (address) => {
         window.ethereum.request({ method: 'eth_getBalance', params: [address, 'latest'] })
             .then(balance => {
-                setBalance(ethers.utils.formatEther(balance).slice(0, 6));
+                setBalance(ethers.formatEther(balance).slice(0, 6));
             });
     }
 
@@ -98,50 +96,6 @@ function Dashboard() {
         try {
             await window.ethereum.request({
                 method: 'wallet_switchEthereumChain',
-                params: [{ chainId: `0x${Number(1).toString(16)}` }],
-            });
-            setNetwork('ETH');
-            setSuccess('Network Changed to Ethereum MainNet');
-            toastSuccess();
-        } catch (switchError) {
-            // This error code indicates that the chain has not been added to MetaMask.
-            if (switchError.code === 4902) {
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [
-                            {
-                                chainId: `0x${Number(4).toString(16)}`,
-                                chainName: "Ethereum Testnet Rinkeby",
-                                nativeCurrency: {
-                                    name: "Rinkeby Ether",
-                                    symbol: "RIN",
-                                    decimals: 18
-                                },
-                                rpcUrls: [
-                                    "https://rinkeby.infura.io/v3/69302fe6fb334a56a954d24e39a4ae81",
-                                    "wss://rinkeby.infura.io/ws/v3/69302fe6fb334a56a954d24e39a4ae81"
-                                ],
-                                blockExplorerUrls: ["https://rinkeby.etherscan.io"]
-                            },
-                        ],
-                    });
-                } catch (addError) {
-                    setError(addError.message);
-                    toastError();
-                }
-            }
-
-            setError(switchError.message);
-            toastError();
-        }
-    }
-
-    //change network to eth testnet (rinkeby)
-    const changeToEthTestNet = async () => {
-        try {
-            await window.ethereum.request({
-                method: 'wallet_switchEthereumChain',
                 params: [{ chainId: `0x${Number(4).toString(16)}` }],
             });
             setNetwork('ETH');
@@ -163,12 +117,56 @@ function Dashboard() {
                                     decimals: 18
                                 },
                                 rpcUrls: [
-                                    "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
-                                    "wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}",
+                                    `https://mainnet.infura.io/v3/418b47ea40df49c688cac7ecc9a6ca30`,
+                                    `wss://mainnet.infura.io/ws/v3/418b47ea40df49c688cac7ecc9a6ca30`,
                                     "https://api.mycryptoapi.com/eth",
                                     "https://cloudflare-eth.com"
                                 ],
                                 blockExplorerUrls: ["https://etherscan.io"]
+                            },
+                        ],
+                    });
+                } catch (addError) {
+                    setError(addError.message);
+                    toastError();
+                }
+            }
+
+            setError(switchError.message);
+            toastError();
+        }
+    }
+
+    //change network to eth testnet (rinkeby)
+    const changeToEthTestNet = async () => {
+        try {
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: `0x${Number(1).toString(16)}` }],
+            });
+            setNetwork('ETH');
+            setSuccess('Network Changed to Ethereum TestNet');
+            toastSuccess();
+        } catch (switchError) {
+            // This error code indicates that the chain has not been added to MetaMask.
+            if (switchError.code === 4902) {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_addEthereumChain',
+                        params: [
+                            {
+                                chainId: `0x${Number(4).toString(16)}`,
+                                chainName: "Ethereum Testnet Rinkeby",
+                                nativeCurrency: {
+                                    name: "Rinkeby Ether",
+                                    symbol: "RIN",
+                                    decimals: 18
+                                },
+                                rpcUrls: [
+                                    "https://rinkeby.infura.io/v3/418b47ea40df49c688cac7ecc9a6ca30",
+                                    "wss://rinkeby.infura.io/ws/v3/418b47ea40df49c688cac7ecc9a6ca30"
+                                ],
+                                blockExplorerUrls: ["https://rinkeby.etherscan.io"]
                             },
                         ],
                     });
@@ -295,7 +293,7 @@ function Dashboard() {
                     params: [
                         {
                             from: walletAdrres,
-                            to: reciever,
+                            to: receiver,
                             gas: '0x76c0',
                             gasPrice: '0x6aa790224',
                             value: "0x" + Number(Web3.utils.toWei(amount, "ether")).toString(16), // 2441406250
@@ -328,63 +326,68 @@ function Dashboard() {
     }
 
     return (
-        <div className="page-container">
-            <div className="container-glass">
-                <h1>
-                    My Wallet
-                </h1>
-                <br />
-                <div className='address-container'>
-                    <p>{first}...{last}</p> &nbsp;&nbsp;
-                    <button onClick={copyHandler} style={{background: 'transparent', border: '0'}}><img src={copy} className="copy" alt="logo" /></button>
-                </div>
-
-                <ToastContainer
-                    position="bottom-center"
-                    autoClose={2000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss={false}
-                    draggable={false}
-                    pauseOnHover={false}
-                />
-
-                <div className='balance-container'>
-                    <p>Balance</p><br/>
-                    <h2 className='balance'>{balance} {network}</h2>
-                </div>
-
-                <div className='transfer'>
-                    <InputDecimal type="text" placeholder="Transfer Amount" className='input' value={amount} onChange={(evt) => { setAmount(evt.target.value); }} />
-                    <InputDecimal type="text" placeholder="Receiver Address" className='input' value={reciever} onChange={(evt) => { setReciever(evt.target.value); }} />
-                    <button className='btn-send' onClick={transferhandler}>Transfer</button>
-                </div>
-                <div className='txHash' hidden={isHashAvailable === false}>
-                    <small>TxHash</small><br/>
-                    <small>{txHash}</small><br/>
-                    <button onClick={copyTxHash} style={{background: 'transparent', border: '0'}}><img src={copy} className="copytxHash" alt="logo" /></button>
-                </div>
-                
-
-                <h2 className='switch-title'>Switch Networks</h2>
-                <br />
-                <div className='network-switcher'>
-                    <div className='content-left'>
-                        <h4 className='switch-title'>Main Networks</h4>
-                        <button className='btn-network' onClick={changeToEthMainNet}>Ethereum</button>
-                        &nbsp; &nbsp; &nbsp;
-                        <button className='btn-network' onClick={changeToBSCMainNet}>BSC</button>
+        <div className="main-container">
+            <div className="page-container">
+                <div className="container-glass">
+                    <h1>
+                        My Wallet
+                    </h1>
+                    <br />
+                    <div className='address-container'>
+                        <p>{first}...{last}</p> &nbsp;&nbsp;
+                        <button onClick={copyHandler} style={{background: 'transparent', border: '0'}}><img src={copy} className="copy" alt="logo" /></button>
                     </div>
-                    <div className='content-right'>
-                        <h4 className='switch-title'>Test Networks</h4>
-                        <button className='btn-network' onClick={changeToEthTestNet}>Rinkeby</button>
-                        &nbsp; &nbsp; &nbsp;
-                        <button className='btn-network' onClick={changeToBSCTestNet}>BSC</button>
+
+                    <ToastContainer
+                        position="bottom-center"
+                        autoClose={2000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss={false}
+                        draggable={false}
+                        pauseOnHover={false}
+                    />
+
+                    <div className='balance-container'>
+                        <p>Balance</p><br/>
+                        <h2 className='balance'>{balance} {network}</h2>
+                    </div>
+
+                    <div className='transfer'>
+                        <InputDecimal type="text" placeholder="Transfer Amount" className='input' value={amount} onChange={(evt) => { setAmount(evt.target.value); }} />
+                        <InputDecimal type="text" placeholder="Receiver Address" className='input' value={receiver} onChange={(evt) => { setReceiver(evt.target.value); }} />
+                        <button className='btn-send' onClick={transferhandler}>Transfer</button>
+                    </div>
+                    <div className='txHash' hidden={isHashAvailable === false}>
+                        <small>TxHash</small><br/>
+                        <small>{txHash}</small><br/>
+                        <button onClick={copyTxHash} style={{background: 'transparent', border: '0'}}><img src={copy} className="copytxHash" alt="logo" /></button>
+                    </div>
+
+                </div>
+            </div>
+            <div className="page-container">
+
+                <div className="container-glass">
+                    <h2 className='switch-title'>Switch Networks</h2>
+                    <br />
+                    <div className='network-switcher'>
+                        <div className='content-left'>
+                            <h4 className='switch-title'>Main Networks</h4>
+                            <button className='btn-network' onClick={changeToEthMainNet}>Ethereum</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button className='btn-network' onClick={changeToBSCMainNet}>BSC</button>
+                        </div>
+                        <div className='content-right'>
+                            <h4 className='switch-title'>Test Networks</h4>
+                            <button className='btn-network' onClick={changeToEthTestNet}>Rinkeby</button>
+                            &nbsp; &nbsp; &nbsp;
+                            <button className='btn-network' onClick={changeToBSCTestNet}>BSC</button>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
