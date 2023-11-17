@@ -1,10 +1,9 @@
 # V-Wallet (with MetaMask)
 
-This project is developed for learning purposes. <br />
-It contains MetaMask integration, wallet connect, change network, show balance and transfer.
+This project contains MetaMask integration, wallet connect, change network, show balance and transfer.
 
 ## Demo
-Visit https://v-wallet-eight.vercel.app/
+I've deployed to Vercel. Visit https://v-wallet-eight.vercel.app/
 
 ## Screenshots
 
@@ -26,7 +25,9 @@ Visit https://v-wallet-eight.vercel.app/
 
 ## How to Run
 
-Make sure you already install MetaMask as your browser extension. Download here https://metamask.io/download/
+Make sure you already install MetaMask as your browser extension. Download here https://metamask.io/download/ <br/>
+
+To test transaction, i'm using testing network Sepolia to get some ETH from faucet https://www.infura.io/faucet <br/>
 
 In the project directory, you can run:
 
@@ -40,5 +41,7 @@ Runs the app in the development mode.
 
 ### `yarn build`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To deploy on production mode.
+
+## Contact
+Visit https://vanydiah.carrd.co

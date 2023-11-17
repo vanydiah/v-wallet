@@ -83,7 +83,7 @@ function Dashboard() {
     let first;
     let last;
     if (walletAdrres !== null) {
-        first = walletAdrres.slice(0, 5);
+        first = walletAdrres.slice(0, 7);
         last = walletAdrres.slice(-4);
     }
 
@@ -336,7 +336,7 @@ function Dashboard() {
                 <br />
                 <div className='address-container'>
                     <p>{first}...{last}</p> &nbsp;&nbsp;
-                    <img src={copy} className="copy" alt="logo" onClick={copyHandler} />
+                    <button onClick={copyHandler} style={{background: 'transparent', border: '0'}}><img src={copy} className="copy" alt="logo" /></button>
                 </div>
 
                 <ToastContainer
@@ -364,7 +364,7 @@ function Dashboard() {
                 <div className='txHash' hidden={isHashAvailable === false}>
                     <small>TxHash</small><br/>
                     <small>{txHash}</small><br/>
-                    <img src={copy} className="copytxHash" alt="logo" onClick={copyTxHash} />
+                    <button onClick={copyTxHash} style={{background: 'transparent', border: '0'}}><img src={copy} className="copytxHash" alt="logo" /></button>
                 </div>
                 
 
