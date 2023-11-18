@@ -20,13 +20,26 @@ code {
 
 .flex {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-
 .text-left {
   text-align: left;
 }
+
+@media(max-width: 768px) {
+  .flex{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-left {
+    text-align: center;
+  }
+  
+}
+
 
 .stars, .twinkling, .clouds {
 	position:absolute;
@@ -164,6 +177,7 @@ code {
   display: flex;
   justify-content: center;
   margin: 3rem 0;
+  padding: 0 1rem;
 }
 
 .logo {
@@ -193,7 +207,7 @@ code {
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   width: 100%;
   max-width: 800px;
 }
@@ -235,7 +249,6 @@ code {
 
 .btn-network {
   display: inline-block;
-  padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
@@ -246,6 +259,7 @@ code {
   color: #ecbb35;
   padding: 1rem 2rem;
   background-color: transparent;
+  margin: .5rem;
 }
 
 .btn-network:hover {
@@ -257,7 +271,7 @@ code {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: -100px;
+  margin-top: -80px;
 }
 
 .content-left {

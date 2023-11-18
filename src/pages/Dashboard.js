@@ -377,13 +377,11 @@ function Dashboard() {
                         <div className='content-left'>
                             <h4 className='switch-title'>Main Networks</h4>
                             <button className='btn-network' onClick={changeToEthMainNet}>Ethereum</button>
-                            &nbsp; &nbsp; &nbsp;
                             <button className='btn-network' onClick={changeToBSCMainNet}>BSC</button>
                         </div>
                         <div className='content-right'>
                             <h4 className='switch-title'>Test Networks</h4>
                             <button className='btn-network' onClick={changeToEthTestNet}>Rinkeby</button>
-                            &nbsp; &nbsp; &nbsp;
                             <button className='btn-network' onClick={changeToBSCTestNet}>BSC</button>
                         </div>
                     </div>
